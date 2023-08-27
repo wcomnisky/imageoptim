@@ -116,7 +116,11 @@ func Quality(preset string) Option {
 }
 
 func Format(name string) Option {
-	return Option{fmt.Sprintf("format=%s", name)}
+	n := strings.ToLower(name)
+	if n == "jpg" {
+		n = "jpeg"
+	}
+	return Option{fmt.Sprintf("format=%s", n)}
 }
 
 func Timeout(seconds int) Option {
